@@ -22,19 +22,19 @@ public class BoardManager : MonoBehaviour
 	private List<GameObject> activePlayer;
 
 	public bool isPlayer1Turn = true;
-
+	private ButtonManager bm;
 
 //	private int firstsix = 0;
 	//private Quaternion orientation = Quaternion.Euler(0,180,0);
 
-	private void Start()
+	void Start()
 	{
-		ButtonManager bm = UnityEngine.Component.gameObject.get<ButtonManager>();
+		bm = UnityEngine.Component.FindObjectOfType<ButtonManager> ();
 		SpawnAllPlayers ();
 
 	}
 
-	private void SpawnAllPlayers()
+	void SpawnAllPlayers()
 	{
 		activePlayer = new List<GameObject> ();
 		Players = new Ludor[15, 15];
@@ -99,7 +99,7 @@ public class BoardManager : MonoBehaviour
 			{
 				if (selectionX >= 0 && selectionY >= 0) 
 				{
-					if (Players [selectionX, selectionY].isAlive = false)
+					if (Players [selectionX, selectionY].isAlive == false)
 						Players [selectionX, selectionY].isAlive = true;
 					MovePlayer (1, 6);
 				}
